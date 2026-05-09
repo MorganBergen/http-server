@@ -6,17 +6,19 @@
   *
   *
   *                   figlet is a utility for convering strings into ascii art
+  *                   index is an HTML file that will be served at the root route
   **/
 
   import figlet from 'figlet';
+  import index from './index.html';
 
   const server = Bun.serve({
-
     port: 3000,
     routes: {
-      "/": () => new Response('information'),
+      "/": index,
+      // "/": () => new Response('Bun!'),
       "/figlet": () => {
-        const body = figlet.textSync('INFORMATION');
+        const body = figlet.textSync('Bun!');
         return new Response(body);
       }
     }
